@@ -1,0 +1,43 @@
+Movie API
+This is a simple Movie API built using Node.js, Express.js, Mongoose, and TypeScript. The API allows users to manage a collection of movies with genre, rating, and streaming link. The API has the following endpoints:
+
+GET /movies: List all the movies in the lobby
+GET /search?q={query}: Search for a movie by title or genre
+POST /movies: Add a new movie to the lobby (requires "admin" role)
+PUT /movies/:id: Update an existing movie's information (title, genre, rating, or streaming link) (requires "admin" role)
+DELETE /movies/:id: Delete a movie from the lobby (requires "admin" role)
+Prerequisites
+Node.js
+MongoDB
+Setup
+Clone the repository
+Install dependencies using npm install
+Create a .env file in the root directory with the following content:
+bash
+Edit
+Full Screen
+Copy code
+MONGODB_URI=mongodb://localhost:27017/movies
+JWT_SECRET=your_jwt_secret
+Start the API using npm start
+API Documentation
+The API is documented using Swagger UI. You can access the documentation by visiting http://localhost:3000/api-docs in your browser.
+
+Test Cases
+The test cases for the movie code can be found in the src/test directory. The tests are written in TypeScript and use the Jest testing framework. To run the tests, use the command npm test.
+
+Caching
+Caching is implemented using the cache-manager and cache-manager-mongodb-store packages. The caching strategy used is LRU (Least Recently Used) with a maximum cache size of 1000 entries. The cache is stored in a MongoDB database.
+
+To enable caching, set the CACHE_TTL environment variable to the desired time to live in seconds. For example, to set the TTL to 60 seconds, use the following command:
+
+bash
+Edit
+Full Screen
+Copy code
+CACHE_TTL=60 npm start
+Code Quality
+The code quality is ensured using ESLint and Prettier. The .eslintrc.json and .prettierrc.json files in the root directory define the code style and formatting rules. The code is automatically formatted and linted using the npm run lint and npm run format commands.
+
+License
+This project is licensed under the MIT License.

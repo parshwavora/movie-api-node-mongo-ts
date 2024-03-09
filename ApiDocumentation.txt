@@ -1,0 +1,123 @@
+Movie Lobby API
+The Movie Lobby API is a RESTful API for managing a collection of movies. The API allows users to list all the movies, search for movies by title or genre, add a new movie, update an existing movie's information, and delete a movie.
+
+Base URL
+http://localhost:3000
+
+Authentication
+Please pass a param (admin:true) || (admin:false)
+Endpoints
+List all movies
+GET /movies
+
+This endpoint returns a list of all movies in the lobby.
+
+Response
+200 OK
+
+json
+Edit
+Full Screen
+Copy code
+[
+  {
+    "id": 1,
+    "title": "Movie 1",
+    "genre": "Action",
+    "rating": 4.5,
+    "streamingLink": "https://www.example.com/movie1"
+  },
+  {
+    "id": 2,
+    "title": "Movie 2",
+    "genre": "Comedy",
+    "rating": 3.8,
+    "streamingLink": "https://www.example.com/movie2"
+  }
+]
+Search for a movie by title or genre
+GET /search?q={query}
+
+This endpoint searches for movies by title or genre.
+
+Query Parameters
+q (required): The search query.
+Response
+200 OK
+
+json
+Edit
+Full Screen
+Copy code
+[
+  {
+    "id": 1,
+    "title": "Movie 1",
+    "genre": "Action",
+    "rating": 4.5,
+    "streamingLink": "https://www.example.com/movie1",
+    "admin":true
+  },
+  {
+    "id": 3,
+    "title": "Movie 3",
+    "genre": "Action",
+    "rating": 4.2,
+    "streamingLink": "https://www.example.com/movie3",
+    "admin":true
+  }
+]
+Add a new movie
+POST /movies
+
+This endpoint adds a new movie to the lobby. This endpoint requires authentication with the "admin" role.
+
+Request Body
+title (required): The title of the movie.
+genre (required): The genre of the movie.
+rating (required): The rating of the movie.
+streamingLink (required): The streaming link of the movie.
+Response
+201 Created
+
+json
+Edit
+Full Screen
+Copy code
+{
+  "id": 3,
+  "title": "Movie 3",
+  "genre": "Action",
+  "rating": 4.2,
+  "streamingLink": "https://www.example.com/movie3"
+}
+Update an existing movie's information
+PUT /movies/:id
+
+This endpoint updates an existing movie's information. This endpoint requires authentication with the "admin" role.
+
+Path Parameters
+id (required): The ID of the movie to update.
+Request Body
+title (optional): The new title of the movie.
+genre (optional): The new genre of the movie.
+rating (optional): The new rating of the movie.
+streamingLink (optional): The new streaming link of the movie.
+Response
+200 OK
+
+json
+Edit
+Full Screen
+Copy code
+{
+  "id": 1,
+  "title": "New Movie Title",
+  "genre": "Comedy",
+  "rating": 3.9,
+  "streamingLink": "https://www.example.com/new-movie-link"
+}
+Delete a movie
+DELETE /movies/:id
+
+This endpoint deletes a movie from the lobby. This endpoint requires
